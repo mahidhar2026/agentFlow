@@ -37,7 +37,7 @@ const [filter, setFilter] = useState("ALL");
 
 const handleCopySessionLink = async (sessionToken: string, caseId: number) => {
   await navigator.clipboard.writeText(
-    `http://localhost:3000/session/${sessionToken}`
+    `${process.env.NEXT_PUBLIC_FRONTEND_URL}/session/${sessionToken}`
   );
   setCopiedId(caseId);
   setTimeout(() => setCopiedId(null), 2000);
