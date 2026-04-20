@@ -13,7 +13,7 @@ export default function NewWorkflow() {
     const handleSubmit = async(e: React.FormEvent) => {
         e.preventDefault();
 
-        await fetch(`${process.env.NEXT_PUBLIC_API_URL}/workflows`, {
+        await fetch(`${process.env.NEXT_PUBLIC_API_URL}/workflow`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
