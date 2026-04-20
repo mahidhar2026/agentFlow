@@ -24,7 +24,7 @@ export default function DashboardPage() {
     const [cases, setCases] = useState<Case[]>([]);
 
     const fetchCases = async () => {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/case`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/case`);
         const data = await res.json();
         setCases(data);
     };
@@ -35,11 +35,10 @@ const [copiedId, setCopiedId] = useState<number | null>(null);
 
 const [filter, setFilter] = useState("ALL");
 
-const handleCopySessionLink = async (sessionToken: string, caseId: number) => {
-  await navigator.clipboard.writeText(
-    `${process.env.NEXT_PUBLIC_FRONTEND_URL}/session/${sessionToken}`
-  );
-  setCopiedId(caseId);
+const handleCopySessionLink = async (customerCase: Case) => {
+  const link = `${process.env.NEXT_PUBLIC_FRONTEND_URL}/session/${customerCase.sessionToken}`;
+  await navigator.clipboard.writeText(link);
+  setCopiedId(customerCase.id);
   setTimeout(() => setCopiedId(null), 2000);
 };
     
@@ -177,7 +176,7 @@ const handleCopySessionLink = async (sessionToken: string, caseId: number) => {
                                     </Link>
                                     <button
                                         onClick={() =>
-                                            handleCopySessionLink(customerCase.sessionToken, customerCase.id)
+                                            handleCopySessionLink(customerCase.case)
                                         }
                                         className="bg-black text-white px-4 py-2 rounded-xl text-sm"
                                         >
