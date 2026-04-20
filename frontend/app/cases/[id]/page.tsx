@@ -59,7 +59,7 @@ export default function CaseDetailPage() {
 
     const handleCopySessionLink = async() => {
         await navigator.clipboard.writeText(
-            `http://localhost:3000/session/${customerCase?.sessionToken}`
+            `${process.env.NEXT_PUBLIC_FRONTEND_URL}/session/${customerCase?.sessionToken}`
 
         );
         setCopied(true);
