@@ -24,7 +24,7 @@ export default function DashboardPage() {
     const [cases, setCases] = useState<Case[]>([]);
 
     const fetchCases = async () => {
-        const res = await fetch("http://localhost:5000/case");
+        const res = await fetch(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/case`);
         const data = await res.json();
         setCases(data);
     };
