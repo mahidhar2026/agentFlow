@@ -20,7 +20,9 @@ export default function NewCasePage() {
     
     useEffect(() => {
         const fetchWorkflows = async () => {
-            const res = await fetch("http://localhost:5000/workflow");
+            const res = await fetch(
+                `${process.env.NEXT_PUBLIC_API_URL}/workflow`
+            );
             const data = await res.json();
             setWorkflows(data);
 
@@ -33,7 +35,7 @@ export default function NewCasePage() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        const res = await fetch("http://localhost:5000/case",{
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/case`,{
             method: "POST",
             headers: {
                 "Content-Type" : "application/json",

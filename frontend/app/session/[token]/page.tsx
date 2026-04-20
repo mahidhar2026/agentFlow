@@ -25,7 +25,7 @@ export default function SessionPage() {
     
 
     const fetchSession = async() => {
-        const res = await fetch(`http://localhost:5000/session/${token}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/session/${token}`);
         const data = await res.json();
         setSession(data);
     };
@@ -39,7 +39,7 @@ export default function SessionPage() {
         const finalMessage = messageText || input;
         if (!finalMessage.trim()) return;
 
-        await fetch("http://localhost:5000/message",{
+        await fetch(`${process.env.NEXT_PUBLIC_API_URL}/message`,{
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
