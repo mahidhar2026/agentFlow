@@ -14,7 +14,7 @@ export default function NewCasePage() {
     const [customerName, setCustomerName] = useState("");
     const [email, setEmail] = useState("");
     const [amountDue, setAmountDue] = useState("");
-    const [workflowId, setWorkflowId] = useState<Workflow[]>([]);
+    const [workflowId, setWorkflowId] = useState<number | "">("");
     const [workflows, setWorkflows] = useState<Workflow[]>([]);
     const [sessionLink, setSessionLink] = useState("");
     
@@ -105,7 +105,7 @@ export default function NewCasePage() {
                         <select
                             className="w-full border rounded-xl text-gray-600 px-4 py-3"
                             value={workflowId}
-                            onChange={(e) => setWorkflowId(e.target.value)}
+                            onChange={(e) => setWorkflowId(Number(e.target.value))}
                             required
                         >
                             <option value="">Select a workflow</option>
