@@ -33,7 +33,7 @@ router.post("/",async (req, res) => {
 
     res.json({
         case: newCase,
-        sessionLink: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/${token}`,
+        sessionLink: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/session/${token}`,
 
     });
 });
